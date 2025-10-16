@@ -1,43 +1,365 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+import React from 'react';
+import { BookOpen, Users, Circle, Flame, Star, Shield, Scroll } from 'lucide-react';
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+const App = () => {
+  const canto3 = {
+    title: "Canto III – The Gates of Hell",
+    quote: "“Per me si va ne la città dolente,\nper me si va ne l’etterno dolore,\nper me si va tra la perduta gente.\nGiustizia mosse il mio alto fattore;\nfecemi la divina podestate,\nla somma sapienza e ’l primo amore.\nDinanzi a me non fuor cose create\nse non etterne, e io etterno duro.\nLasciate ogne speranza, voi ch’intrate.”",
+    translation: "“Through me you enter the city of woe,\nThrough me you go to everlasting pain,\nThrough me you go among the lost people.\nJustice urged on my high artificer;\nDivine power made me,\nSupreme wisdom and primal love.\nBefore me nothing was created\nThat was not eternal, and I endure eternally.\nAbandon all hope, ye who enter here.”",
+    summary: "Canto III marks Dante’s arrival at the gates of Hell. Above the entrance, he reads the chilling inscription that defines Hell’s eternal, hopeless nature. Here, he encounters the **cowardly souls**—those who lived without taking sides in life, now condemned to chase a banner while being stung by wasps and maggots. They are denied entry even into Hell proper, symbolizing the ultimate insignificance of a life without moral commitment. Then **Charon**, the demonic ferryman, appears to transport souls across the river Acheron. He initially refuses to carry Dante (a living soul), but Virgil silences him with divine authority. As Dante crosses, the earth trembles, and he faints—awakening in Hell itself.",
+    keyThemes: [
+      "Divine Justice – Hell is not arbitrary; it is crafted by God’s wisdom and love",
+      "Moral Neutrality as Condemnation – Even inaction is a sin",
+      "The Finality of Judgment – No redemption possible in Hell",
+      "The Role of Reason – Virgil’s authority over Charon shows reason guiding the soul"
+    ],
+    significance: "Canto III establishes the theological and emotional tone of the entire Inferno. It introduces the concept of *contrapasso* (punishment fitting the sin) and confirms that Hell is a place of absolute, unchanging despair. The famous line 'Abandon all hope' becomes the defining motto of damnation."
+  };
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+  const characters = [
+    {
+      name: "Dante Alighieri",
+      role: "The Pilgrim",
+      description: "The protagonist and narrator of the Divine Comedy. Dante represents every human soul on a journey toward God. At the beginning of Inferno, he finds himself lost in a dark wood, symbolizing his spiritual confusion and moral error. His journey through Hell, Purgatory, and Paradise represents the soul's path to redemption.",
+      significance: "Dante serves as both observer and participant in his journey. His reactions to the souls he encounters reveal his own moral development and growing understanding of divine justice.",
+      videoUrl: "https://res.cloudinary.com/ddm1enrqg/video/upload/v1760494480/fec58c62-5717-4c02-8077-1ed0ed5bfefe_awasr8.mp4"
+    },
+    {
+      name: "Virgil",
+      role: "The Guide",
+      description: "The ancient Roman poet who serves as Dante's guide through Hell and Purgatory. Virgil represents human reason and wisdom. He was sent by Beatrice (who represents divine love) to rescue Dante from the dark wood and lead him toward salvation.",
+      significance: "As a symbol of human reason, Virgil can guide Dante through Hell and Purgatory but cannot enter Paradise, which requires faith and divine grace rather than reason alone.",
+      videoUrl: "https://res.cloudinary.com/ddm1enrqg/video/upload/v1760570817/75197250-a773-43c7-9621-e4eb687936bc_nwb6bt.mp4"
+    },
+    {
+      name: "Charon",
+      role: "The Ferryman",
+      description: "The demonic ferryman who transports souls across the river Acheron into Hell. Charon is described as an old man with white hair and fiery eyes who beats reluctant souls with his oar. He initially refuses to ferry Dante across because Dante is still alive.",
+      significance: "Charon represents the point of no return—the moment when souls commit to their eternal fate in Hell. His role emphasizes the finality of divine judgment.",
+      videoUrl: "https://res.cloudinary.com/ddm1enrqg/video/upload/cfc5ac930312d24b5ea285adf1151fad.mp4"
+    },
+    {
+      name: "Pope Celestine V",
+      role: "The Cowardly Pope",
+      description: "Pietro da Morrone, who reigned as Pope Celestine V for only five months in 1294 before abdicating the papacy. Dante places him among the 'neutral' souls in the vestibule of Hell—not in the circles proper—for his refusal to accept the moral responsibility of his office. Though canonized as a saint, Dante condemns him for 'the great refusal' (il gran rifiuto), seeing his resignation as an act of spiritual cowardice that enabled the corrupt papacy of Boniface VIII.",
+      significance: "Celestine V symbolizes the sin of moral neutrality. For Dante, failing to act in the face of duty is as damning as active evil. His presence underscores the Inferno’s core message: every soul must choose, and indecision is its own form of damnation.",
+      videoUrl: "https://res.cloudinary.com/ddm1enrqg/video/upload/v1760571673/46e49e8b-8cdc-46e8-bf72-e146ad302b62_vxjtcb.mp4"
+    }
+  ];
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
-</html>
+  // Map of circle names to image URLs
+  const circleImages = {
+    "Limbo": "https://res.cloudinary.com/ddm1enrqg/image/upload/v1760589094/canto-4-inferno_kkxyhs.jpg",
+    "Lust": "https://res.cloudinary.com/ddm1enrqg/image/upload/v1760589180/canto-5-inferno1_iqy1qy.jpg",
+    "Gluttony": "https://res.cloudinary.com/ddm1enrqg/image/upload/v1760590472/circle3_hq800w.jpg",
+    "Greed": "https://res.cloudinary.com/ddm1enrqg/image/upload/v1760590480/canto-7_lvbxt5.jpg",
+    "Wrath": "https://res.cloudinary.com/ddm1enrqg/image/upload/v1760590489/canto-8_mkemzj.jpg",
+    "Violence": "https://res.cloudinary.com/ddm1enrqg/image/upload/v1760596278/Screenshot_20251016-143011_f4wavf.jpg",
+    "Fraud": "https://res.cloudinary.com/ddm1enrqg/image/upload/v1760596287/Screenshot_20251016-143039_u32uv6.jpg",  // ✅ FRAUD IMAGE ADDED HERE
+    "Treachery": "https://res.cloudinary.com/ddm1enrqg/image/upload/v1760596307/Screenshot_20251016-143100_zeqnti.jpg"
+  };
+
+  const circlesOfHell = [
+    {
+      circle: 1,
+      name: "Limbo",
+      sin: "Virtuous pagans and unbaptized souls",
+      punishment: "Eternal existence without hope of salvation, but without active torment",
+      notableSouls: ["Homer", "Socrates", "Plato", "Virgil", "Aeneas"]
+    },
+    {
+      circle: 2,
+      name: "Lust",
+      sin: "Excessive sexual desire",
+      punishment: "Blown about by violent storms, never finding peace",
+      notableSouls: ["Francesca da Rimini", "Paolo Malatesta", "Cleopatra", "Helen of Troy"]
+    },
+    {
+      circle: 3,
+      name: "Gluttony",
+      sin: "Excessive consumption of food, drink, or other worldly pleasures",
+      punishment: "Lying in vile slush produced by ceaseless rain, guarded by Cerberus",
+      notableSouls: ["Ciacco", "Various unnamed gluttons"]
+    },
+    {
+      circle: 4,
+      name: "Greed",
+      sin: "Avarice and prodigality (excessive hoarding or spending)",
+      punishment: "Pushing heavy weights against each other in opposite directions",
+      notableSouls: ["Misers and spendthrifts", "Clergy and popes"]
+    },
+    {
+      circle: 5,
+      name: "Wrath",
+      sin: "Anger and sullenness",
+      punishment: "Fighting each other on the surface of the river Styx, or lying beneath its murky waters",
+      notableSouls: ["Filippo Argenti", "Various wrathful and sullen souls"]
+    },
+    {
+      circle: 6,
+      name: "Heresy",
+      sin: "Denial of fundamental religious truths",
+      punishment: "Trapped in flaming tombs within the city of Dis",
+      notableSouls: ["Farinata degli Uberti", "Cavalcante de' Cavalcanti", "Epicurus"]
+    },
+    {
+      circle: 7,
+      name: "Violence",
+      sin: "Violence against others, self, or God/nature",
+      punishment: "Subdivided into three rings: boiling blood (against others), suicide trees (against self), and burning desert with fiery rain (against God/nature)",
+      notableSouls: ["Alexander the Great", "Attila", "Suicides", "Sodomites", "Usurers"]
+    },
+    {
+      circle: 8,
+      name: "Fraud (Malebolge)",
+      sin: "Simple fraud and deception",
+      punishment: "Ten ditches (bolge) with various punishments for different types of fraud",
+      notableSouls: ["Panderers", "Flatterers", "Simoniacs", "Sorcerers", "Barrators", "Hypocrites", "Thieves", "False counselors", "Sowers of discord", "Falsifiers"]
+    },
+    {
+      circle: 9,
+      name: "Treachery",
+      sin: "Betrayal of special relationships (family, country, guests, benefactors)",
+      punishment: "Frozen in the icy lake Cocytus, with varying degrees of immersion based on severity",
+      notableSouls: ["Judas Iscariot", "Brutus", "Cassius", "Count Ugolino", "Fra Alberigo"]
+    }
+  ];
+
+  const realms = [
+    {
+      name: "Inferno (Hell)",
+      icon: Flame,
+      description: "The realm of eternal punishment for unrepentant sinners. Hell is depicted as a vast funnel-shaped pit with nine concentric circles, each representing different categories of sin with corresponding punishments. The structure reflects Dante's belief in divine justice—punishments fit the crimes (contrapasso). At the center lies Satan, frozen in ice, eternally chewing on history's greatest traitors.",
+      keyFeatures: ["Nine concentric circles", "Contrapasso (punishment fits the crime)", "Satan at the center", "Eternal, unchanging torment"]
+    },
+    {
+      name: "Purgatorio (Purgatory)",
+      icon: Star,
+      description: "A mountain with seven terraces representing the seven deadly sins, plus an ante-purgatory and earthly paradise at the summit. Unlike Hell, Purgatory is temporary—souls here are destined for Heaven but must be purified of their sins first. The atmosphere is hopeful, with souls actively working toward redemption through prayer, reflection, and suffering that has purpose.",
+      keyFeatures: ["Seven terraces for seven deadly sins", "Temporary purification", "Hope and progress", "Guarded by Cato", "Earthly Paradise at summit"]
+    },
+    {
+      name: "Paradiso (Paradise/Heaven)",
+      icon: Shield,
+      description: "The realm of eternal bliss and union with God. Paradise consists of nine celestial spheres corresponding to the medieval cosmological model, culminating in the Empyrean—the dwelling place of God beyond physical space and time. Here, souls exist in perfect harmony with divine love, and Dante experiences visions of ultimate truth and beauty.",
+      keyFeatures: ["Nine celestial spheres", "Empyrean (God's dwelling)", "Perfect harmony with divine love", "Beatrice as guide", "Ultimate revelation of divine truth"]
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gray-900 text-gray-100">
+      {/* Header */}
+      <header className="bg-black/50 border-b border-red-900/30 backdrop-blur-sm">
+        <div className="container mx-auto px-6 py-8">
+          <div className="text-center">
+            <h1 className="text-5xl md:text-7xl font-bold mb-4 text-red-600 drop-shadow-lg">
+              DANTE'S INFERNO
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto">
+              A Journey Through Hell, Purgatory, and Paradise
+            </p>
+          </div>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="container mx-auto px-6 py-12">
+        {/* Canto III Section */}
+        <section className="mb-20">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-6 text-red-500 flex items-center justify-center gap-3">
+              <Scroll className="w-8 h-8" />
+              Canto III – The Gates of Hell
+            </h2>
+            <div className="w-32 h-1 bg-red-600 mx-auto"></div>
+          </div>
+
+          <div className="bg-gray-800/50 border border-red-900/20 rounded-lg p-6 md:p-8">
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-2xl font-bold text-red-400 mb-4">The Inscription</h3>
+                <p className="text-gray-300 italic whitespace-pre-line mb-6">{canto3.quote}</p>
+                <p className="text-gray-400 text-sm">— Original Italian</p>
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-red-400 mb-4">English Translation</h3>
+                <p className="text-gray-300 italic whitespace-pre-line">{canto3.translation}</p>
+              </div>
+            </div>
+
+            <div className="mt-8">
+              <h3 className="text-xl font-semibold text-gray-200 mb-3">Summary</h3>
+              <p className="text-gray-300 mb-4 leading-relaxed">{canto3.summary}</p>
+
+              <h3 className="text-xl font-semibold text-gray-200 mb-3">Key Themes</h3>
+              <ul className="space-y-2 mb-4">
+                {canto3.keyThemes.map((theme, idx) => (
+                  <li key={idx} className="flex items-start gap-2">
+                    <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span className="text-gray-300">{theme}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="bg-gray-700/50 rounded p-4">
+                <p className="text-gray-400 italic">"{canto3.significance}"</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* The Three Realms */}
+        <section className="mb-20">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-6 text-red-500 flex items-center justify-center gap-3">
+              <BookOpen className="w-8 h-8" />
+              The Three Realms
+            </h2>
+            <div className="w-32 h-1 bg-red-600 mx-auto"></div>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {realms.map((realm, index) => {
+              const Icon = realm.icon;
+              return (
+                <div key={index} className="bg-gray-800/50 border border-red-900/20 rounded-lg p-6 hover:bg-gray-800/70 transition-all duration-300">
+                  <div className="text-center mb-4">
+                    <Icon className="w-12 h-12 text-red-500 mx-auto mb-3" />
+                    <h3 className="text-2xl font-bold text-red-400">{realm.name}</h3>
+                  </div>
+                  <p className="text-gray-300 mb-4 leading-relaxed">{realm.description}</p>
+                  <div className="space-y-2">
+                    {realm.keyFeatures.map((feature, idx) => (
+                      <div key={idx} className="flex items-start gap-2">
+                        <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <span className="text-gray-400 text-sm">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* Characters Section */}
+        <section className="mb-20">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-6 text-red-500 flex items-center justify-center gap-3">
+              <Users className="w-8 h-8" />
+              Key Characters
+            </h2>
+            <div className="w-32 h-1 bg-red-600 mx-auto"></div>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            {characters.map((character, index) => (
+              <div key={index} className="bg-gray-800/50 border border-red-900/20 rounded-lg p-6 hover:bg-gray-800/70 transition-all duration-300">
+                <h3 className="text-2xl font-bold text-red-400 mb-2">{character.name}</h3>
+                <p className="text-red-300 font-medium mb-4">{character.role}</p>
+                <p className="text-gray-300 mb-4 leading-relaxed">{character.description}</p>
+                <div className="bg-gray-700/50 rounded p-4">
+                  <p className="text-gray-400 italic">"{character.significance}"</p>
+                </div>
+                
+                {/* Video player if videoUrl exists, otherwise placeholder */}
+                {character.videoUrl ? (
+                  <div className="mt-6 rounded-lg overflow-hidden bg-black">
+                    <video
+                      controls
+                      playsInline
+                      width="100%"
+                      height="280"
+                      className="rounded-lg"
+                      preload="metadata"
+                    >
+                      <source 
+                        src={character.videoUrl} 
+                        type="video/mp4" 
+                      />
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                ) : (
+                  <div className="mt-6 bg-gray-700/30 border-2 border-dashed border-gray-600 rounded-lg h-48 flex items-center justify-center">
+                    <span className="text-gray-500 text-sm">Add {character.name} image/video here</span>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Nine Circles of Hell */}
+        <section>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-6 text-red-500 flex items-center justify-center gap-3">
+              <Circle className="w-8 h-8" />
+              The Nine Circles of Hell
+            </h2>
+            <div className="w-32 h-1 bg-red-600 mx-auto"></div>
+            <p className="text-gray-400 mt-4 max-w-3xl mx-auto">
+              Each circle represents a different category of sin, with punishments that reflect the nature of the transgression (contrapasso).
+            </p>
+          </div>
+          
+          <div className="space-y-6">
+            {circlesOfHell.map((circle, index) => (
+              <div key={index} className="bg-gray-800/50 border border-red-900/20 rounded-lg p-6 hover:bg-gray-800/70 transition-all duration-300">
+                <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                  <div>
+                    <h3 className="text-2xl font-bold text-red-400 mb-1">
+                      Circle {circle.circle}: {circle.name}
+                    </h3>
+                    <p className="text-red-300 font-medium">Sin: {circle.sin}</p>
+                  </div>
+                  <div className="mt-2 md:mt-0">
+                    <span className="bg-red-900/30 text-red-400 px-3 py-1 rounded-full text-sm font-medium">
+                      Level {circle.circle}
+                    </span>
+                  </div>
+                </div>
+                
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-200 mb-2">Punishment</h4>
+                    <p className="text-gray-300 mb-4">{circle.punishment}</p>
+                    
+                    <h4 className="text-lg font-semibold text-gray-200 mb-2">Notable Souls</h4>
+                    <p className="text-gray-400">{circle.notableSouls.join(', ')}</p>
+                  </div>
+                  
+                  {/* Image for circles that have one, placeholder for others */}
+                  {circleImages[circle.name] ? (
+                    <div className="rounded-lg overflow-hidden border border-gray-700">
+                      <img
+                        src={circleImages[circle.name]}
+                        alt={`Illustration of ${circle.name}`}
+                        className="w-full h-48 object-cover"
+                      />
+                    </div>
+                  ) : (
+                    <div className="bg-gray-700/30 border-2 border-dashed border-gray-600 rounded-lg h-48 flex items-center justify-center">
+                      <span className="text-gray-500 text-sm">Add {circle.name} image/video here</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </main>
+
+      {/* Footer */}
+      <footer className="bg-black/50 border-t border-red-900/30 mt-20 py-8">
+        <div className="container mx-auto px-6 text-center">
+          <p className="text-gray-400">
+            "Abandon all hope, ye who enter here." - Dante's Inferno, Canto III
+          </p>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default App;
